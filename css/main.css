@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway"
+}
+
+
+
+#viewport {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0
+}
+
+
+#viewport #me {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 300px;
+    margin-top: -150px
+}
+
+@media only screen and (min-width: 480px) and (max-width: 965px) {
+    #viewport #me  {
+        font-size:0.5em;
+        height: 200px;
+        margin-top: -100px;
+    }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 480px) {
+    #viewport #me  {
+        font-size:0.3em;
+        height: 100px;
+        margin-top: -50px;
+    }
+}
+
+#viewport #me #header-section {
+    color: #454545;
+    font-size: 9em;
+    font-weight: 200;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 210px
+}
+
+@media only screen and (min-width: 480px) and (max-width: 965px) {
+    #viewport #me #header-section {
+        line-height:140px;
+    }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 480px) {
+    #viewport #me #header-section{
+        line-height:70px;
+    }
+}
+#viewport #me #header-smaller {
+    color: #454545;
+    font-size: 7em;
+    font-weight: 200;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 140px
+}
+
+@media only screen and (min-width: 480px) and (max-width: 965px) {
+    #viewport #me #header-smaller {
+        line-height:100px;
+    }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 480px) {
+    #viewport #me #header-smaller{
+        line-height:70px;
+    }
+}
+
+.contact , .paragraph {
+    color: #454545;
+    font-weight: 100;
+    font-size: 3em;
+    text-align: center;
+    letter-spacing: 0.12em;
+    line-height: 90px;
+    unicode-bidi: bidi-override;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none
+}
+
+@media only screen and (min-width: 480px) and (max-width: 965px) {
+    #viewport #me .contact ,  #viewport #me .paragraph {
+        line-height:60px;
+    }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 480px) {
+    #viewport #me .contact ,  #viewport #me .paragraph {
+        line-height:30px;
+    }
+}
+div.social > div{
+    display: inline-block;
+    margin-top: 0.5em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.social div a img.social-logo{
+    height:60px;
+}
+@media only screen and (min-width: 480px) and (max-width: 965px) {
+    div.social div a img.social-logo{
+        height:50px;
+    }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 480px) {
+    div.social div a img.social-logo{
+        height:35px;
+    }
+}
+
+p {
+    font-family: Open Sans,Arial;
+    color: #454545;
+    font-size: 28px;
+    margin: 2em auto;
+    max-width: 800px;
+    padding: 1em;
+    line-height: 1.4;
+    text-align: left
+}
+p span{
+    color:#117e69;
+
+}
+
+a {
+    color: #07a;
+}
+a:visited {
+    color: #941352;
+}
