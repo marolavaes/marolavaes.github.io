@@ -12,7 +12,7 @@ function changeSkills(i)
   }
   setTimeout(
 
-      function(){changeSkills((i+1));}, 1000);
+      function(){changeSkills((i+1));}, 2000);
 }
 
 
