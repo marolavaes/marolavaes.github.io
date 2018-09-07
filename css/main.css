@@ -155,7 +155,7 @@ div.social div a img.social-logo{
 }
 
 p {
-    font-family: Open Sans,Arial;
+    font-family: 'Roboto',sans-serif;
     color: #262626;
     font-size: 4vmin;
     margin: 2em auto;
@@ -179,4 +179,8 @@ a:visited {
 
 #about-me{
     padding-top: 20px;
+}
+
+h1{
+    font-family: 'Raleway', sans-serif;
 }
