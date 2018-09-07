@@ -1,7 +1,10 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Raleway"
+    font-family: "Raleway",sans-serif;
+    text-align:center;
+
+    
 }
 
 
@@ -11,35 +14,52 @@ body {
     top: 0;
     left: 0;
     bottom: 0;
-    right: 0
+    right: 0;
+    text-align:center;
+    margin-top:300px;
+
 }
 
 
-#viewport #me {
-    position: absolute;
+#viewport #me, #me-text {
     top: 25%;
-    width: 100%;
+    width: 60%;
     height: 300px;
-    margin-top: -100px
+    margin-top: -100px;
+    font-size:0.5em;
+    display: inline-block;
+
+    
+}
+
+#me-text{
+    width: 80%;
+
 }
 
 @media only screen and (min-width: 480px) and (max-width: 965px) {
-    #viewport #me  {
+    #viewport #me , #me-text  {
         font-size:0.5em;
         height: 200px;
+        width:100%;    
+        text-align:center;
+
         margin-top: -100px;
     }
 }
 
 @media only screen and (min-width: 200px) and (max-width: 480px) {
-    #viewport #me  {
+    #viewport #me , #me-text  {
         font-size:0.3em;
         height: 100px;
+        width:100%;
+        text-align:center;
+
         margin-top: -50px;
     }
 }
 
-#viewport #me #header-section {
+#viewport #me #header-section , #me-text #header-section{
     color: #454545;
     font-size: 9em;
     font-weight: 200;
@@ -49,34 +69,35 @@ body {
 }
 
 @media only screen and (min-width: 480px) and (max-width: 965px) {
-    #viewport #me #header-section {
+    #viewport #me #header-section , #me-text #header-section{
         line-height:140px;
     }
 }
 
 @media only screen and (min-width: 200px) and (max-width: 480px) {
-    #viewport #me #header-section{
+    #viewport #me #header-section , #me-text #header-section{
         line-height:70px;
     }
 }
-#viewport #me #header-smaller {
+#viewport #me-text #header-smaller {
     color: #454545;
     font-size: 7em;
     font-weight: 200;
     padding-left:6vw;
+    margin-top:-100px;
     text-align: left;
     text-transform: uppercase;
     line-height: 140px
 }
 
 @media only screen and (min-width: 480px) and (max-width: 965px) {
-    #viewport #me #header-smaller {
+    #viewport #me-text #header-smaller {
         line-height:100px;
     }
 }
 
 @media only screen and (min-width: 200px) and (max-width: 480px) {
-    #viewport #me #header-smaller{
+    #viewport #me-text #header-smaller{
         line-height:70px;
     }
 }
@@ -135,10 +156,10 @@ div.social div a img.social-logo{
 
 p {
     font-family: Open Sans,Arial;
-    color: #454545;
+    color: #262626;
     font-size: 4vmin;
     margin: 2em auto;
-    padding: 6vw;
+    padding: 20px;
     line-height: 1.4;
     text-align: left
 }
