@@ -72,12 +72,16 @@ body {
 @media only screen and (min-width: 480px) and (max-width: 965px) {
     #viewport #me #header-section , #me-text #header-section{
         line-height:140px;
+        margin-top:-50px;
+
     }
 }
 
 @media only screen and (min-width: 200px) and (max-width: 480px) {
     #viewport #me #header-section , #me-text #header-section{
         line-height:70px;
+        margin-top:-50px;
+
     }
 }
 #viewport #me-text #header-smaller {
