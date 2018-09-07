@@ -63,7 +63,8 @@ body {
     color: #454545;
     font-size: 7em;
     font-weight: 200;
-    text-align: center;
+    padding-left:6vw;
+    text-align: left;
     text-transform: uppercase;
     line-height: 140px
 }
@@ -87,12 +88,7 @@ body {
     text-align: center;
     letter-spacing: 0.12em;
     line-height: 90px;
-    unicode-bidi: bidi-override;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none
+   
 }
 
 @media only screen and (min-width: 480px) and (max-width: 965px) {
@@ -106,6 +102,15 @@ body {
         line-height:30px;
     }
 }
+
+.social{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
 div.social > div{
     display: inline-block;
     margin-top: 0.5em;
@@ -131,10 +136,9 @@ div.social div a img.social-logo{
 p {
     font-family: Open Sans,Arial;
     color: #454545;
-    font-size: 28px;
+    font-size: 4vmin;
     margin: 2em auto;
-    max-width: 800px;
-    padding: 1em;
+    padding: 6vw;
     line-height: 1.4;
     text-align: left
 }
@@ -150,4 +154,8 @@ a {
 }
 a:visited {
     color: #941352;
+}
+
+#about-me{
+    padding-top: 20px;
 }
