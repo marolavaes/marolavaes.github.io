@@ -116,7 +116,7 @@ function draw() {
   background(255);
 
   // Draw the video?
-  tint(0, 153, 204, 126); // Tint blue and set transparency
+  tint(0, 153, 204, 200); // Tint blue and set transparency
  
   image(flipVideo, 0, 0);
   textSize(32);
