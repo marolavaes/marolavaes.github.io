@@ -19,7 +19,7 @@ let modelURL ;
 updateLink();
 function updateLink(){
     modelURL = document.getElementById("link").value;
-    console.log(modelURL)
+    preload();
 }
 
 
