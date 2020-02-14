@@ -45,7 +45,6 @@ function start(){
     started = true;
     
     resetSketch();
-    loop();
 
  }
 
