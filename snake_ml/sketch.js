@@ -37,19 +37,25 @@ let h;
 
 
 function setup() {
-  createCanvas(640, 480);
- 
+  var canvas = createCanvas(620, 480);
+  canvas.parent('sketch-holder');
+  video = createCapture(VIDEO);
+
   // Setting up the game
   resetSketch();
   
   var button = createButton("reset");
+  button.parent('sketch-holder');
   button.mousePressed(resetSketch);
+  var buttons = document.getElementsByTagName('button');
+
+  buttons[buttons.length-1].className='aesthetic-windows-95-button'
+
 
 }
 
 function resetSketch(){
  // Create the video
- video = createCapture(VIDEO);
  video.size(640, 480);
  video.hide();
  // Mirror the video since we trained it that way!
@@ -111,11 +117,7 @@ function draw() {
   snake.show();
 
   if (snake.endGame()) {
-    background(255, 0, 0);
-    textSize(50)
-    textAlign(CENTER, CENTER);
-    fill(0);
-    text('END', 10, 50);
+    background(250, 119, 133);
     print("END GAME");
     noLoop();
   }
