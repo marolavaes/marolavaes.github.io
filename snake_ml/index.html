@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">body{margin:40px
+        auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0
+        10px}h1,h2,h3{line-height:1.2}</style>
+  <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/addons/p5.sound.min.js"></script>
+
+  <script src="https://unpkg.com/ml5@0.4.2/dist/ml5.min.js"></script>
+
+  <meta charset="utf-8" />
+
+</head>
+
+<body>
+    <input style="width:100%" id="link" placeholder="Enter the link to your model" value="https://storage.googleapis.com/tm-models/onzpfu6q/" type="text">
+    <button id='update' onClick="updateLink()">Update Link</button>
+  <script src="snake.js"></script>
+
+  <script src="sketch.js"></script>
+  <h4>How To Use:</h4>
+  <p>1. Create a model with teachable machines</p>
+  <p>2. Labels should be 'up', 'down', 'left', 'right'</p>
+  <p>3. enter the link, click update and restart</p>
+
+</body>
+
+
+</html>
