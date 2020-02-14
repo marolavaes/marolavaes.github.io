@@ -9,6 +9,8 @@
 // The video
 let video;
 let flipVideo;
+var started = false;
+
 
 // Storing the label
 let label = "waiting...";
@@ -35,14 +37,21 @@ let food;
 let w;
 let h;
 
+function start(){
+    if(!started){
+    video = createCapture(VIDEO);
+    }
+
+    started = true;
+    
+    resetSketch();
+    loop();
+
+ }
 
 function setup() {
   var canvas = createCanvas(620, 480);
   canvas.parent('sketch-holder');
-  video = createCapture(VIDEO);
-
-  // Setting up the game
-  resetSketch();
   
   var button = createButton("reset");
   button.parent('sketch-holder');
@@ -50,6 +59,9 @@ function setup() {
   var buttons = document.getElementsByTagName('button');
 
   buttons[buttons.length-1].className='aesthetic-windows-95-button'
+  noLoop();
+  // Setting up the game
+
 
 
 }
@@ -100,6 +112,7 @@ function controlSnake() {
 }
 
 function draw() {
+    if(started){
   background(255);
 
   // Draw the video?
@@ -125,7 +138,7 @@ function draw() {
   noStroke();
   fill(255, 0, 0);
   rect(food.x, food.y, 1, 1);
-}
+}}
 
 // STEP 3: Get the classification!
 function gotResults(error, results) {
