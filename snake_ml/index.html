@@ -14,7 +14,21 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" type="text/css" href="aesthetic.css">
 
+<script>
+function openmodal(){
+    var info = document.getElementById('info');
 
+
+info.className+=' is-active';
+info.style.display = 'block';
+}
+function closemodal(){
+    var info = document.getElementById('info');
+
+info.className= 'aesthetic-windows-95-modal-content';
+info.style.display = "none";
+}
+</script>
 </head>
 
 <body class="aesthetic-bg-gradient aesthetic-font">
@@ -27,19 +41,25 @@
           <div class="aesthetic-windows-95-modal-title-bar-text">
             Ｓｎａｋｅ　ＭＬ　韻 ド
           </div>
-      
+         
           <div class="aesthetic-windows-95-modal-title-bar-controls">
             <div class="aesthetic-windows-95-button-title-bar">
-              <button>
-                X
+              <button onclick="openmodal()" >
+                ?
               </button>
             </div>
           </div>
       
         </div>
+       
           <div class="aesthetic-windows-95-modal-content"  id='sketch-holder'>
-
-    <h2 class="aesthetic-effect-text-glitch" data-glitch="Ｓｎａｋｅ　ＭＬ　韻 ド">Ｓｎａｋｅ　ＭＬ　韻 ド</h2>
+<div id='info' class="aesthetic-notification">
+  <button onclick='closemodal()' class="dismiss">X</button>
+  <div class="aesthetic-notification-content">
+    Thank you to Daniel Shiffman: <a href='https://thecodingtrain.com/'>https://thecodingtrain.com/</a>
+  </div>
+</div>
+    <h2 class="aesthetic-effect-text-glitch" data-glitch="Ｓｎａｋｅ　ＭＬ　韻 ド">Ｓｎａｋｅ　ＭＬ　韻 ド.exe</h2>
 
     <input class="aesthetic-windows-95-text-input" style="width:100%" id="link" placeholder="Enter the link to your model" value="https://teachablemachine.withgoogle.com/models/Uke7hMok/" type="text">
     <button class="aesthetic-windows-95-button" id='update' onClick="updateLink()">Update Link</button>
