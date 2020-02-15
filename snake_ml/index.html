@@ -53,6 +53,8 @@ info.style.display = "none";
         </div>
        
           <div class="aesthetic-windows-95-modal-content"  id='sketch-holder'>
+
+<!-- modal -->
 <div id='info' class="aesthetic-notification">
   <button onclick='closemodal()' class="dismiss">X</button>
   <div class="aesthetic-notification-content">
@@ -62,10 +64,30 @@ info.style.display = "none";
     <p>Thank you to Daniel Shiffman: <a href='https://thecodingtrain.com/'>https://thecodingtrain.com/</a></p>
   </div>
 </div>
-    <h2 class="aesthetic-effect-text-glitch" data-glitch="インターネットの未知の領域">インターネットの未知の領域</h2>
 
-    <input class="aesthetic-windows-95-text-input" style="width:100%" id="link" placeholder="Enter the link to your model" value="https://teachablemachine.withgoogle.com/models/Uke7hMok/" type="text">
+
+    <h2 class="aesthetic-effect-text-glitch" data-glitch="インターネットの未知の領域">インターネットの未知の領域</h2>
+   <input class="aesthetic-windows-95-text-input" style="width:100%" id="link" placeholder="Enter the link to your model" value="https://teachablemachine.withgoogle.com/models/Uke7hMok/" type="text">
     <button class="aesthetic-windows-95-button" id='update' onClick="updateLink()">Update Link</button>
+    <div>
+        <label  class="aesthetic-windows-95-radio">Image
+          <input id='image' onclick="change('image')" type="radio" name="my-aesthetic-windows-95-radio" />
+          <span class="aesthetic-windows-95-checkmark"></span>
+        </label>
+      
+        <label  class="aesthetic-windows-95-radio">Audio
+          <input id='audio' onclick="change('audio')" type="radio" name="my-aesthetic-windows-95-radio" />
+          <span class="aesthetic-windows-95-checkmark"></span>
+        </label>
+    
+        <!-- <label  class="aesthetic-windows-95-radio">Pose
+          <input id='pose' disabled='disabled' onclick="change('pose')" type="radio" name="my-aesthetic-windows-95-radio" />
+          <span class="aesthetic-windows-95-checkmark"></span>
+        </label> -->
+      </div>
+
+
+
   <script src="snake.js"></script>
 
   <script src="sketch.js"></script>

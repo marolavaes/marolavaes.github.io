@@ -18,16 +18,39 @@ let label = "waiting...";
 // The classifier
 let classifier;
 let modelURL ;
+
+let previousType='image';
+let type = 'image';
 updateLink();
 function updateLink(){
     modelURL = document.getElementById("link").value;
     preload();
 }
 
+function change(newType){
+    if(previousType!=newType){
+        type = newType;
+        previousType = newType;
+        console.log(type);
+    }
+}
 
 // STEP 1: Load the model!
 function preload() {
-  classifier = ml5.imageClassifier(modelURL + 'model.json');
+    switch(type) {
+        case 'pose':
+            console.log('not supported yet');
+            classifier = ml5.imageClassifier(modelURL + 'model.json');
+          break;
+        case 'audio':
+            classifier = ml5.soundClassifier(modelURL + 'model.json');
+        break;
+        case 'image':
+            classifier = ml5.imageClassifier(modelURL + 'model.json');
+            break;
+        default: // image
+        classifier = ml5.imageClassifier(modelURL + 'model.json');
+      }
 }
 
 // Snake Game Variables
