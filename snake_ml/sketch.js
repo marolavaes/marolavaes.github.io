@@ -17,18 +17,18 @@ let label = "waiting...";
 
 // The classifier
 let classifier;
-let modelURL ;
+let modelURL;
 
-let previousType='image';
+let previousType = 'image';
 let type = 'image';
 updateLink();
-function updateLink(){
+function updateLink() {
     modelURL = document.getElementById("link").value;
     preload();
 }
 
-function change(newType){
-    if(previousType!=newType){
+function change(newType) {
+    if (previousType != newType) {
         type = newType;
         previousType = newType;
         console.log(type);
@@ -38,12 +38,12 @@ function change(newType){
 // STEP 1: Load the model!
 function preload() {
 
-    if(type=='image'){
+    if (type == 'image') {
         classifier = ml5.imageClassifier(modelURL + 'model.json');
-    }else{
+    } else {
         classifier = ml5.soundClassifier(modelURL + 'model.json');
     }
-    
+
 }
 
 // Snake Game Variables
@@ -53,132 +53,130 @@ let food;
 let w;
 let h;
 
-function start(){
-    if(!started){
-    video = createCapture(VIDEO);
-    // Create the video
- video.size(640, 480);
- video.hide();
- // Mirror the video since we trained it that way!
- flipVideo = ml5.flipImage(video);
+function start() {
+    if (!started) {
+        video = createCapture(VIDEO);
+        // Create the video
+        video.size(640, 480);
+        video.hide();
+        // Mirror the video since we trained it that way!
+        flipVideo = ml5.flipImage(video);
 
     }
 
     started = true;
-    
+
     resetSketch();
 
- }
+}
 
 function setup() {
-  var canvas = createCanvas(620, 480);
-  canvas.parent('sketch-holder');
-  console.log("canvas")
-  
-  var button = createButton("reset");
-  button.parent('sketch-holder');
-  button.mousePressed(resetSketch);
-  var buttons = document.getElementsByTagName('button');
+    var canvas = createCanvas(620, 480);
+    canvas.parent('sketch-holder');
+    console.log("canvas")
 
-  buttons[buttons.length-1].className='aesthetic-windows-95-button'
-  noLoop();
-  // Setting up the game
+    var button = createButton("reset");
+    button.parent('sketch-holder');
+    button.mousePressed(resetSketch);
+    var buttons = document.getElementsByTagName('button');
+
+    buttons[buttons.length - 1].className = 'aesthetic-windows-95-button'
+    noLoop();
+    // Setting up the game
 
 
 
 }
 
-function resetSketch(){
-    
- 
+function resetSketch() {
 
- // STEP 2: Start classifying
- classifyVideo();
-// Snake Game
-w = floor(width / rez);
-h = floor(height / rez);
-frameRate(5);
-snake = new Snake();
-foodLocation();
-loop()
+
+
+    // STEP 2: Start classifying
+    classifyVideo();
+    // Snake Game
+    w = floor(width / rez);
+    h = floor(height / rez);
+    frameRate(5);
+    snake = new Snake();
+    foodLocation();
+    loop()
 }
 
 // STEP 2 classify!
 function classifyVideo() {
-  // Flip the video!
-  flipVideo = ml5.flipImage(video);
- // Workaround for a memory leak, creating a canvas every time the image is flipped: 
-  var canvases = document.getElementsByTagName("canvas")
-  for (i = 2; i < canvases.length-5; i++) {
-      canvases[i].remove();
-  }
+    // Flip the video!
+    flipVideo = ml5.flipImage(video);
 
-//    flipVideo = video
-  classifier.classify(flipVideo, gotResults);
+    classifier.classify(flipVideo, gotResults);
+    flipVideo.remove()  // for the memory leak
+
+
 }
 
 // Snake Game
 function foodLocation() {
-  let x = floor(random(w));
-  let y = floor(random(h));
-  food = createVector(x, y);
+    let x = floor(random(w));
+    let y = floor(random(h));
+    food = createVector(x, y);
 }
 
 // Control the game based on the label
 function controlSnake() {
-  if (label === "left") {
-    snake.setDir(-1, 0);
-  } else if (label === "right") {
-    snake.setDir(1, 0);
-  } else if (label === "down") {
-    snake.setDir(0, 1);
-  } else if (label === "up") {
-    snake.setDir(0, -1);
-  }
+    if (label === "left") {
+        snake.setDir(-1, 0);
+    } else if (label === "right") {
+        snake.setDir(1, 0);
+    } else if (label === "down") {
+        snake.setDir(0, 1);
+    } else if (label === "up") {
+        snake.setDir(0, -1);
+    }
 }
 
 function draw() {
-    if(started){
-  background(255);
+    if (started) {
+        background(255);
 
-  // Draw the video?
-  tint(0, 153, 204, 200); // Tint blue and set transparency
-  
+        // Draw the video?
+        tint(0, 153, 204, 200); // Tint blue and set transparency
 
-  image(flipVideo, 0, 0);
-  textSize(32);
-  fill(0);
-  text(label, 10, 50);
 
-  // Draw the game
-  scale(rez);
-  if (snake.eat(food)) {
-    foodLocation();
-  }
-  snake.update();
-  snake.show();
+        image(flipVideo, 0, 0);
+        textSize(32);
+        fill(0);
+        text(label, 10, 50);
 
-  if (snake.endGame()) {
-    background(250, 119, 133);
-    print("END GAME");
-    noLoop();
-  }
+        // Draw the game
+        scale(rez);
+        if (snake.eat(food)) {
+            foodLocation();
+        }
+        snake.update();
+        snake.show();
 
-  noStroke();
-  fill(255, 0, 0);
-  rect(food.x, food.y, 1, 1);
-}}
+        if (snake.endGame()) {
+            background(250, 119, 133);
+            print("END GAME");
+            noLoop();
+        }
+
+        noStroke();
+        fill(255, 0, 0);
+        rect(food.x, food.y, 1, 1);
+    }
+}
 
 // STEP 3: Get the classification!
 function gotResults(error, results) {
-  if (error) {
-    console.error(error);
-    return;
-  }
-  label = results[0].label;
-  // Control the snake and classify again!
-  controlSnake();
-  if(!snake.endGame()){
-  classifyVideo();
-  }
+    if (error) {
+        console.error(error);
+        return;
+    }
+    label = results[0].label;
+    // Control the snake and classify again!
+    controlSnake();
+    if (!snake.endGame()) {
+        classifyVideo();
+    }
 }
