@@ -37,20 +37,13 @@ function change(newType){
 
 // STEP 1: Load the model!
 function preload() {
-    switch(type) {
-        case 'pose':
-            console.log('not supported yet');
-            classifier = ml5.imageClassifier(modelURL + 'model.json');
-          break;
-        case 'audio':
-            classifier = ml5.soundClassifier(modelURL + 'model.json');
-        break;
-        case 'image':
-            classifier = ml5.imageClassifier(modelURL + 'model.json');
-            break;
-        default: // image
+
+    if(type=='image'){
         classifier = ml5.imageClassifier(modelURL + 'model.json');
-      }
+    }else{
+        classifier = ml5.soundClassifier(modelURL + 'model.json');
+    }
+    
 }
 
 // Snake Game Variables
@@ -63,6 +56,12 @@ let h;
 function start(){
     if(!started){
     video = createCapture(VIDEO);
+    // Create the video
+ video.size(640, 480);
+ video.hide();
+ // Mirror the video since we trained it that way!
+ flipVideo = ml5.flipImage(video);
+
     }
 
     started = true;
@@ -74,6 +73,7 @@ function start(){
 function setup() {
   var canvas = createCanvas(620, 480);
   canvas.parent('sketch-holder');
+  console.log("canvas")
   
   var button = createButton("reset");
   button.parent('sketch-holder');
@@ -89,11 +89,8 @@ function setup() {
 }
 
 function resetSketch(){
- // Create the video
- video.size(640, 480);
- video.hide();
- // Mirror the video since we trained it that way!
- flipVideo = ml5.flipImage(video);
+    
+ 
 
  // STEP 2: Start classifying
  classifyVideo();
@@ -110,6 +107,13 @@ loop()
 function classifyVideo() {
   // Flip the video!
   flipVideo = ml5.flipImage(video);
+ // Workaround for a memory leak, creating a canvas every time the image is flipped: 
+  var canvases = document.getElementsByTagName("canvas")
+  for (i = 2; i < canvases.length-5; i++) {
+      canvases[i].remove();
+  }
+
+//    flipVideo = video
   classifier.classify(flipVideo, gotResults);
 }
 
@@ -139,7 +143,8 @@ function draw() {
 
   // Draw the video?
   tint(0, 153, 204, 200); // Tint blue and set transparency
- 
+  
+
   image(flipVideo, 0, 0);
   textSize(32);
   fill(0);
@@ -173,5 +178,7 @@ function gotResults(error, results) {
   label = results[0].label;
   // Control the snake and classify again!
   controlSnake();
+  if(!snake.endGame()){
   classifyVideo();
+  }
 }
