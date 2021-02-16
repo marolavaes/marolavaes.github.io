@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Parameter test</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  
+</head>
+
+<body>
+
+
+
+<div class="center" >
+  <h1>Deine Get Parameter</h1>
+  <p id="parameters"> Aktuell wohl keine </p>
+
+</div>
+
+<script>
+
+      const urlParams = new URLSearchParams(window.location.search);
+      document.getElementById('parameters').innerHTML=urlParams
+
+
+</script>
+</body>
+</html>
